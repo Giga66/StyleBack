@@ -1,0 +1,72 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+// Note that some adapters may set a maximum length for the String type by default, please ensure your strings are long
+// enough when changing adapters.
+// See https://www.prisma.io/docs/orm/reference/prisma-schema-reference#string for more information
+datasource db {
+  provider = "sqlite"
+  url      = "file:dev.sqlite"
+}
+
+model Session {
+  id            String    @id
+  shop          String
+  state         String
+  isOnline      Boolean   @default(false)
+  scope         String?
+  expires       DateTime?
+  accessToken   String
+  userId        BigInt?
+  firstName     String?
+  lastName      String?
+  email         String?
+  accountOwner  Boolean   @default(false)
+  locale        String?
+  collaborator  Boolean?  @default(false)
+  emailVerified Boolean?  @default(false)
+  refreshToken        String?
+  refreshTokenExpires DateTime?
+}
+
+model MerchantSettings {
+  shop             String   @id
+  replyToEmail     String?
+  brandColor       String?  @default("#000000")
+  delay1Hour       Int      @default(1)
+  delay2Hour       Int      @default(24)
+  delay3Hour       Int      @default(72)
+  email1Body       String?
+  email2Body       String?
+  email3Body       String?
+  discountCode     String?
+  isActive         Boolean  @default(true)
+}
+
+model AbandonedCart {
+  id              String   @id @default(uuid())
+  shop            String
+  checkoutToken   String   @unique
+  customerEmail   String?
+  cartContents    String   // JSON string
+  status          String   @default("PENDING") // PENDING, RECOVERED, LOST
+  createdAt       DateTime @default(now())
+  updatedAt       DateTime @updatedAt
+  schedules       EmailSchedule[]
+}
+
+model EmailSchedule {
+  id               String         @id @default(uuid())
+  cartId           String
+  cart             AbandonedCart  @relation(fields: [cartId], references: [id], onDelete: Cascade)
+  shop             String
+  sequenceStep     Int            // 1, 2, or 3
+  scheduledSendAt  DateTime
+  status           String         @default("PENDING") // PENDING, SENT, CANCELLED
+  createdAt        DateTime       @default(now())
+  updatedAt        DateTime       @updatedAt
+}

@@ -75,7 +75,7 @@ async function sendRealEmail(cart, step, settings) {
     // Since this is a new Resend account without a verified domain,
     // we must use Resend's default onboarding email as the sender for now.
     const { data: info, error: resendError } = await resend.emails.send({
-      from: `StyleBack Concierge <onboarding@resend.dev>`,
+      from: `StyleBack Concierge <support@novaproductionsx.com>`,
       to: cart.customerEmail,
       subject: step === 1 ? "Your Cart is Reserved" : step === 2 ? "Style Pairings for You" : "A Special Gift Inside",
       html: html,

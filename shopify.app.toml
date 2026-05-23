@@ -1,7 +1,7 @@
 # Learn more about configuring your app at https://shopify.dev/docs/apps/tools/cli/configuration
 
 client_id = "7801b9edbdea42624ff30875d2aa5c83"
-application_url = "https://example.com"
+application_url = "https://styleback-app.onrender.com"
 embedded = true
 name = "StyleBack"
 
@@ -49,8 +49,11 @@ api_version = "2026-07"
   topics = [ "checkouts/create", "checkouts/update" ]
 
 [auth]
-redirect_urls = [ "https://example.com/api/auth" ]
+redirect_urls = [
+  "https://styleback-app.onrender.com/auth/callback",
+  "https://styleback-app.onrender.com/auth/shopify/callback",
+  "https://styleback-app.onrender.com/api/auth/callback"
+]
 
 [build]
-include_config_on_deploy = true
 automatically_update_urls_on_dev = true

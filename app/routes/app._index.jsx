@@ -9,9 +9,9 @@ export const loader = async ({ request }) => {
   
   try {
     await billing.require({
-      plans: ['StyleBack Lifetime Access'],
+      plans: ['styleback-lifetime-access'],
       onFailure: async () => billing.request({
-        plan: 'StyleBack Lifetime Access',
+        plan: 'styleback-lifetime-access',
         isTest: true,
         returnUrl: `https://${session.shop}/admin/apps/styleback`,
       }),

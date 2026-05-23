@@ -24,8 +24,8 @@ const shopify = shopifyApp({
     ? { customShopDomains: [process.env.SHOP_CUSTOM_DOMAIN] }
     : {}),
   billing: {
-    "StyleBack Lifetime Access": {
-      amount: 29.00,
+    "styleback-lifetime-access": {
+      amount: 14.00,
       currencyCode: "USD",
       interval: BillingInterval.OneTime,
     },

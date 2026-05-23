@@ -45,25 +45,16 @@ export function generateEmailTemplate({
     <head>
       <meta charset="utf-8">
       <meta name="viewport" content="width=device-width, initial-scale=1.0">
-      <style>
-        body { font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif; line-height: 1.6; color: #333; margin: 0; padding: 0; background-color: #f4f4f4; }
-        .container { max-width: 600px; margin: 40px auto; background: #ffffff; padding: 40px; border-top: 5px solid ${primaryColor}; box-shadow: 0 4px 10px rgba(0,0,0,0.05); }
-        .header { text-align: center; margin-bottom: 30px; }
-        .store-name { font-family: 'Didot', 'Times New Roman', serif; font-size: 24px; letter-spacing: 2px; text-transform: uppercase; color: ${primaryColor}; margin: 0; }
-        .title { font-family: 'Didot', 'Times New Roman', serif; font-size: 28px; font-weight: normal; margin-top: 30px; margin-bottom: 15px; color: #111; }
-        .body-text { font-size: 16px; color: #555; margin-bottom: 30px; }
-        .btn { display: inline-block; background-color: ${primaryColor}; color: #ffffff; text-decoration: none; padding: 15px 30px; font-weight: bold; letter-spacing: 1px; text-transform: uppercase; font-size: 14px; border-radius: 2px; }
-        .footer { margin-top: 40px; padding-top: 20px; border-top: 1px solid #eee; text-align: center; font-size: 12px; color: #999; }
-      </style>
     </head>
-    <body>
-      <div class="container">
-        <div class="header">
-          <h1 class="store-name">${shop}</h1>
+    <body style="font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif; line-height: 1.6; color: #333; margin: 0; padding: 0; background-color: #f4f4f4;">
+      <div style="max-width: 600px; margin: 40px auto; background: #ffffff; padding: 40px; border-top: 5px solid ${primaryColor}; box-shadow: 0 4px 10px rgba(0,0,0,0.05);">
+        
+        <div style="text-align: center; margin-bottom: 30px;">
+          <h1 style="font-family: 'Didot', 'Times New Roman', serif; font-size: 24px; letter-spacing: 2px; text-transform: uppercase; color: ${primaryColor}; margin: 0; text-decoration: none;">${shop}</h1>
         </div>
         
-        <h2 class="title">${title}</h2>
-        <p class="body-text">${bodyText}</p>
+        <h2 style="font-family: 'Didot', 'Times New Roman', serif; font-size: 28px; font-weight: normal; margin-top: 30px; margin-bottom: 15px; color: #111;">${title}</h2>
+        <p style="font-size: 16px; color: #555; margin-bottom: 30px;">${bodyText}</p>
         
         ${discountHtml}
         
@@ -72,11 +63,11 @@ export function generateEmailTemplate({
         </div>
         
         <div style="text-align: center;">
-          <a href="${checkoutUrl || '#'}" class="btn">Return to Checkout</a>
+          <a href="${checkoutUrl || '#'}" style="display: inline-block; background-color: ${primaryColor}; color: #ffffff; text-decoration: none; padding: 15px 30px; font-weight: bold; letter-spacing: 1px; text-transform: uppercase; font-size: 14px; border-radius: 2px;">Return to Checkout</a>
         </div>
         
-        <div class="footer">
-          <p>You received this email because you left items in your cart at ${shop}.</p>
+        <div style="margin-top: 40px; padding-top: 20px; border-top: 1px solid #eee; text-align: center; font-size: 12px; color: #999;">
+          <p>You received this email because you left items in your cart at <span style="color: ${primaryColor}; text-decoration: none;">${shop}</span>.</p>
         </div>
       </div>
     </body>

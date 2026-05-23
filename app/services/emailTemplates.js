@@ -25,9 +25,11 @@ export function generateEmailTemplate({
 
   // Build the cart items HTML
   const itemsHtml = cartItems.map(item => `
-    <div style="display: flex; margin-bottom: 15px; border-bottom: 1px solid #eee; padding-bottom: 15px;">
+    <div style="display: flex; align-items: center; margin-bottom: 15px; border-bottom: 1px solid #eee; padding-bottom: 15px;">
+      ${item.image_url ? `<img src="${item.image_url}" alt="${item.title || 'Product'}" style="width: 80px; height: 80px; object-fit: cover; border-radius: 4px; border: 1px solid #eee;" />` : `<div style="width: 80px; height: 80px; background: #f9f9f9; border-radius: 4px; border: 1px solid #eee; text-align: center; line-height: 80px; font-size: 10px; color: #999;">Item</div>`}
       <div style="flex: 1; padding-left: 15px;">
         <h3 style="margin: 0; font-size: 16px; color: #333;">${item.title || 'Product'}</h3>
+        ${item.price ? `<p style="margin: 5px 0 0 0; color: #666; font-size: 14px;">$${item.price}</p>` : ''}
       </div>
     </div>
   `).join('');

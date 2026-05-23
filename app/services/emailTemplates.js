@@ -50,7 +50,9 @@ export function generateEmailTemplate({
       <div style="max-width: 600px; margin: 40px auto; background: #ffffff; padding: 40px; border-top: 5px solid ${primaryColor}; box-shadow: 0 4px 10px rgba(0,0,0,0.05);">
         
         <div style="text-align: center; margin-bottom: 30px;">
-          <h1 style="font-family: 'Didot', 'Times New Roman', serif; font-size: 24px; letter-spacing: 2px; text-transform: uppercase; color: ${primaryColor}; margin: 0; text-decoration: none;">${shop}</h1>
+          <h1 style="font-family: 'Didot', 'Times New Roman', serif; font-size: 24px; letter-spacing: 2px; text-transform: uppercase; margin: 0;">
+            <a href="https://${shop}" style="color: ${primaryColor}; text-decoration: none;">${shop}</a>
+          </h1>
         </div>
         
         <h2 style="font-family: 'Didot', 'Times New Roman', serif; font-size: 28px; font-weight: normal; margin-top: 30px; margin-bottom: 15px; color: #111;">${title}</h2>
@@ -67,7 +69,7 @@ export function generateEmailTemplate({
         </div>
         
         <div style="margin-top: 40px; padding-top: 20px; border-top: 1px solid #eee; text-align: center; font-size: 12px; color: #999;">
-          <p>You received this email because you left items in your cart at <span style="color: ${primaryColor}; text-decoration: none;">${shop}</span>.</p>
+          <p>You received this email because you left items in your cart at <a href="https://${shop}" style="color: ${primaryColor}; text-decoration: none;">${shop}</a>.</p>
         </div>
       </div>
     </body>

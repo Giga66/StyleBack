@@ -16,6 +16,25 @@ async function sendRealEmail(cart, step, settings) {
     let discountCode = step === 3 ? settings.discountCode : null;
     let customBody = step === 1 ? settings.email1Body : step === 2 ? settings.email2Body : settings.email3Body;
 
+    // Fetch images for items
+    try {
+      for (let item of items) {
+        if (item.product_id && !item.image_url) {
+          const response = await admin.graphql(`
+            query getProductImage($id: ID!) {
+              product(id: $id) {
+                featuredImage { url }
+              }
+            }
+          `, { variables: { id: `gid://shopify/Product/${item.product_id}` } });
+          const data = await response.json();
+          if (data.data?.product?.featuredImage?.url) {
+            item.image_url = data.data.product.featuredImage.url;
+          }
+        }
+      }
+    } catch (err) { console.error("GraphQL Image Error:", err); }
+
     // STEP 1: Scarcity (Query Inventory)
     if (step === 1 && items.length > 0 && items[0].product_id) {
       try {

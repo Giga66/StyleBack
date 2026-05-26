@@ -25,13 +25,13 @@ export function generateEmailTemplate({
 
   // Build the cart items HTML
   const itemsHtml = cartItems.map(item => `
-    <table width="100%" cellpadding="0" cellspacing="0" border="0" style="margin-bottom: 15px; border-bottom: 1px solid #eee; padding-bottom: 15px;">
+    <table width="100%" cellpadding="0" cellspacing="0" border="0" style="margin-bottom: 30px;">
       <tr>
-        <td width="95" valign="middle">
-          ${item.image_url ? `<img src="${item.image_url}" alt="${item.title || 'Product'}" style="width: 80px; height: 80px; object-fit: cover; border-radius: 4px; border: 1px solid #eee; display: block;" />` : `<div style="width: 80px; height: 80px; background: #f9f9f9; border-radius: 4px; border: 1px solid #eee; text-align: center; line-height: 80px; font-size: 10px; color: #999;">Item</div>`}
+        <td width="120" valign="middle">
+          ${item.image_url ? `<img src="${item.image_url}" alt="${item.title || 'Product'}" style="width: 100px; height: auto; border-radius: 2px; display: block;" />` : `<div style="width: 100px; height: 100px; background: #f9f9f9; border-radius: 2px; text-align: center; line-height: 100px; font-size: 10px; color: #999;">Item</div>`}
         </td>
-        <td valign="middle" style="padding-left: 15px;">
-          <h3 style="margin: 0; font-size: 18px; color: #333; font-weight: 500;">${item.title || 'Product'}</h3>
+        <td valign="middle" style="padding-left: 20px;">
+          <h3 style="margin: 0; font-family: 'Didot', 'Times New Roman', serif; font-size: 20px; color: #111; font-weight: normal; letter-spacing: 0.5px;">${item.title || 'Product'}</h3>
         </td>
       </tr>
     </table>

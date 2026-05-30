@@ -76,8 +76,38 @@ async function sendRealEmail(cart, step, settings) {
     if (step === 3) {
       try {
         discountCode = `STYLEBACK-${Math.random().toString(36).substring(2, 8).toUpperCase()}`;
-        // In a real production app, we would execute discountCodeBasicCreate mutation here
-        // to register this code in the merchant's Shopify store.
+        
+        // Execute discountCodeBasicCreate mutation to actually register this code in Shopify
+        const response = await admin.graphql(`
+          mutation discountCodeBasicCreate($basicCodeDiscount: DiscountCodeBasicInput!) {
+            discountCodeBasicCreate(basicCodeDiscount: $basicCodeDiscount) {
+              userErrors {
+                field
+                message
+              }
+            }
+          }
+        `, {
+          variables: {
+            basicCodeDiscount: {
+              title: "StyleBack Recovery Discount",
+              code: discountCode,
+              startsAt: new Date().toISOString(),
+              customerSelection: { all: true },
+              customerGets: {
+                value: { percentage: 0.1 }, // 10% off
+                items: { all: true }
+              },
+              appliesOncePerCustomer: true,
+              usageLimit: 1
+            }
+          }
+        });
+        
+        const data = await response.json();
+        if (data.data?.discountCodeBasicCreate?.userErrors?.length > 0) {
+          console.error("Failed to create discount code in Shopify:", data.data.discountCodeBasicCreate.userErrors);
+        }
       } catch (err) { console.error("GraphQL Discount Error:", err); }
     }
 

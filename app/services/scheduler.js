@@ -5,7 +5,11 @@ import { Resend } from 'resend';
 const POLLING_INTERVAL_MS = 60 * 1000; // 1 minute
 
 // Initialize Resend with the production API key from environment variables
-const resend = new Resend(process.env.RESEND_API_KEY);
+// We wrap it in a try/catch or conditional so it doesn't crash the local dev server
+let resend;
+if (process.env.RESEND_API_KEY) {
+  resend = new Resend(process.env.RESEND_API_KEY);
+}
 
 import { unauthenticated } from "../shopify.server";
 
@@ -123,6 +127,12 @@ async function sendRealEmail(cart, step, settings) {
 
     // Since this is a new Resend account without a verified domain,
     // we must use Resend's default onboarding email as the sender for now.
+    
+    if (!resend) {
+      console.error("[EMAIL ERROR] Missing RESEND_API_KEY. Cannot send email.");
+      return false;
+    }
+
     const { data: info, error: resendError } = await resend.emails.send({
       from: `StyleBack Concierge <support@novaproductionsx.com>`,
       to: cart.customerEmail,

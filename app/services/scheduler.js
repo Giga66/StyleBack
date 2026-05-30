@@ -4,8 +4,8 @@ import { Resend } from 'resend';
 
 const POLLING_INTERVAL_MS = 60 * 1000; // 1 minute
 
-// Initialize Resend with the production API key
-const resend = new Resend('re_TNCiqg4K_HcVVPVmGSzUUdZQoSX7Thqus');
+// Initialize Resend with the production API key from environment variables
+const resend = new Resend(process.env.RESEND_API_KEY);
 
 import { unauthenticated } from "../shopify.server";
 

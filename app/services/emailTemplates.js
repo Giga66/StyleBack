@@ -10,8 +10,8 @@ export function generateEmailTemplate({
   const primaryColor = brandColor || "#000000";
   
   // Default fashion copy
-  const defaultBody1 = "We noticed you left something behind. Because this piece is trending, we've locked your cart and reserved your items.";
-  const defaultBody2 = "Your reserved cart is expiring soon. We thought you might also like these style pairings.";
+  const defaultBody1 = "We noticed you left something behind. We've saved your cart so you can easily finish checking out.";
+  const defaultBody2 = "Your saved cart is waiting for you. We thought you might also like these style pairings.";
   const defaultBody3 = "Here's a special treat for you to complete your look. Use this exclusive code at checkout.";
 
   let bodyText = "";

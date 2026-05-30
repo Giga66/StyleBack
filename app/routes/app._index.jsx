@@ -139,7 +139,7 @@ export default function Index() {
           <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(200px, 1fr))', gap: '1rem' }}>
             <div style={{ background: '#111', padding: '1rem', borderRadius: '8px' }}>
               <h4 style={{ color: '#fff', margin: '0 0 0.5rem 0' }}>1. The Reservation</h4>
-              <p style={{ color: '#888', fontSize: '0.85rem', margin: 0 }}>Creates scarcity by claiming their cart is temporarily reserved. Checks live inventory for "Low Stock" warnings.</p>
+              <p style={{ color: '#888', fontSize: '0.85rem', margin: 0 }}>Creates urgency by reminding them about their saved items. Checks live inventory for "Low Stock" warnings.</p>
             </div>
             <div style={{ background: '#111', padding: '1rem', borderRadius: '8px' }}>
               <h4 style={{ color: '#fff', margin: '0 0 0.5rem 0' }}>2. The Pairings</h4>
@@ -174,8 +174,8 @@ export default function Index() {
             <div>
               <h3 style={{ fontSize: '1.1rem', color: '#ccc', marginBottom: '1rem', fontWeight: '400', letterSpacing: '0.5px' }}>Email Copy Customization</h3>
               <div style={{ display: 'grid', gridTemplateColumns: '1fr', gap: '1.5rem' }}>
-                <Textarea label="Email 1 (The Reservation) Text" name="email1Body" defaultValue={settings.email1Body || "We noticed you left something behind. Because this piece is trending, we've locked your cart and reserved your items."} />
-                <Textarea label="Email 2 (The Pairings) Text" name="email2Body" defaultValue={settings.email2Body || "Your reserved cart is expiring soon. We thought you might also like these style pairings."} />
+                <Textarea label="Email 1 (The Reservation) Text" name="email1Body" defaultValue={settings.email1Body || "We noticed you left something behind. We've saved your cart so you can easily finish checking out."} />
+                <Textarea label="Email 2 (The Pairings) Text" name="email2Body" defaultValue={settings.email2Body || "Your saved cart is waiting for you. We thought you might also like these style pairings."} />
                 <Textarea label="Email 3 (The Offer) Text" name="email3Body" defaultValue={settings.email3Body || "Here's a special treat for you to complete your look. Use this exclusive code at checkout."} />
               </div>
             </div>
